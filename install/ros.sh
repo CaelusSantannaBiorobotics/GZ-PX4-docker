@@ -17,7 +17,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	ros-${ROS_VERSION}-vision-msgs \
 	ros-${ROS_VERSION}-bondcpp \
 	ros-${ROS_VERSION}-test-msgs \
-	ros-${ROS_VERSION}-behaviortree-v3 \
+	ros-${ROS_VERSION}-behaviortree-cpp-v3 \
 	python3-rosdep \
 	python3-colcon-common-extensions \
 	libgflags-dev
