@@ -26,7 +26,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	libgflags-dev \
 	xtensor-dev \
 	libceres-dev \
-	gazebo \
+	gz-garden \
 	graphicsmagick-libmagick-dev-compat
 
 sudo apt install ros-humble-actuator-msgs 
