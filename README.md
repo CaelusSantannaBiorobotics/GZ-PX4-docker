@@ -1,24 +1,7 @@
 # px4-gz-docker
 
-Docker files needed to build images for px4_sitl simulation in ROS2 and Gazebo
-
-The `./work` directory setup
-
-run `./get_src.sh` to clone each repo and add model to px4 gz world
 
 Additional backup trial maze world is located in the /work/models/maze_sample directory
-
-``` text
-work/
-┣ px4/
-┣ ros2_ws/
-┃ ┗ src/
-┃   ┣ px4_msgs/
-┃   ┣ px4-offboard/
-┃   ┗ ros_gz/
-┗ .gitignore
-```
-
 Please build ros_gz from source. [see ros-gz](https://github.com/gazebosim/ros_gz)
 
 ## Download Src Files
@@ -35,30 +18,36 @@ To build the image
 docker compose build
 ```
 
-To run multiple drones
+If there is no gpu on your pc, you have to comment the docker-compose.override.yml file
+
+Run the container
 
 ```bash
 ./run_dev.sh
 ```
 
-To access the shell of each service, in two different terminals run
+To access the shell of the container, this will open 2 new terminal windows
 
-Terminal 1: `docker exec -u user -it px4_gz-px4_gz-1 terminator`\
+```bash
+docker exec -u user -it px4_gz-px4_gz-1 terminator & docker exec -u user -it px4_gz-px4_gz-1 terminator
+```
 
-To start px4_sitl and ros2 offboard control, split each terminator into 3 panels and run
+## Running Gazebo
 
-1. `cd px4 && make px4_sitl` to build px4_sitl first. (This only need to be built once in one of the container shells)\
-`PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500_lidar PX4_GZ_WORLD=maze_sample ./build/px4_sitl_default/bin/px4 -i 1` to start px4_sitl instance 1 with x500 with added lidar plugin in gz-garden on a sample maze model. (PX4_GZ_MODEL=x500 to run base x500 model)\
+Divide one of the terminal windows in two and run the following commands in the two panes:
 
-2. `MicroXRCEAgent udp4 -p 8888` to start DDS agent for communication with ROS2\
+1.
+   - `cd px4 && make px4_sitl` to build px4_sitl first. (This only need to be built once in one of the container shells)
+   - `PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500_lidar PX4_GZ_WORLD=maze_sample ./build/px4_sitl_default/bin/px4 -i 1` to start px4_sitl instance 1 with x500 with added lidar plugin in gz-garden on a sample maze model. (PX4_GZ_MODEL=x500 to run base x500 model)
+2. `MicroXRCEAgent udp4 -p 8888` to start DDS agent for communication with ROS2
 
 ## Running PX4-offboard
 
-1. `cd ros2_ws && colcon build` to build ros2 workspace
+- `cd ros2_ws && colcon build` to build ros2 workspace
+- `source install/setup.bash` to source the ros2 environment
+- From the built repository under px4_offboard, to run the offboard script, run `ros2 run px4_offboard [script name]` to communicate between the gazebo and ros2 envrionment and use offboard controls with px4.
 
-2. `source install/setup.bash` to source the ros2 environment
-
-3. From the built repository under px4_offboard, to run the offboard script, run `ros2 run px4_offboard [script name]` to communicate between the gazebo and ros2 envrionment and use offboard controls with px4.
+Examples:
 
 ## Environment Variables
 
@@ -71,7 +60,7 @@ To start px4_sitl and ros2 offboard control, split each terminator into 3 panels
 
 Tested versions:
 
-- Ros: `Rolling` nad `Humble`
+- Ros: `Rolling` and `Humble`
 - Gazebo: `Garden`
 - Docker: `24.0.7`
 
@@ -109,9 +98,14 @@ Tested versions:
 - Previous Spring 2022 IEEE Autonomous UAV "Drone" Chase Challenge - [Video](https://www.youtube.com/watch?v=uISFK83FSmQ&ab_channel=JamesGoppert)
 - Issues Tracking: [Github Issues]
 
-### Altro
+## Note
 
-- `sudo apt install ros-humble-vision-msgs`
-- `sudo apt install ros-humble-bondcpp`
-- `sudo apt install ros-humble-test-msgs`
-- `sudo apt install ros-humble-behaviortree-v3`
+### Changelog
+
+- Aggiunta di pacchetti necessari per ros2
+- Rimozione di navigation2 da `run_dev.sh`, potrebbe servire, in tal caso si può provare a installarlo da apt
+
+### Cose utili
+
+- `rosdep check --from-paths . --ignore-src --rosdistro humble`
+- `rosdep install --from-paths src --ignore-src -r -y`
