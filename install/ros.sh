@@ -20,12 +20,13 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	ros-${ROS_VERSION}-behaviortree-cpp-v3 \
 	ros-${ROS_VERSION}-diagnostic-updater \
 	ros-${ROS_VERSION}-ompl \
-#	ros-${ROS_VERSION}-gazebo-ros-pkgs \
 	python3-rosdep \
 	python3-colcon-common-extensions \
 	libgflags-dev \
 	xtensor-dev \
 	libceres-dev \
 	graphicsmagick-libmagick-dev-compat
+
+#ros-${ROS_VERSION}-gazebo-ros-pkgs \
 
 sudo apt install ros-humble-actuator-msgs 
