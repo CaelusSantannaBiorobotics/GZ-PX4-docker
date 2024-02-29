@@ -109,3 +109,5 @@ Tested versions:
 
 - `rosdep check --from-paths . --ignore-src --rosdistro humble`
 - `rosdep install --from-paths src --ignore-src -r -y`
+- `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar` per il lidar
+- ign è diverso da gz, ign è vecchio

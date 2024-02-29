@@ -57,8 +57,8 @@ RUN bash /tmp/install/gazebo.sh && /docker_clean.sh
 # add groups before we do anything that might add a new group
 ARG GID_INPUT=107
 ARG GID_RENDER=110
-RUN sudo groupadd -r -g $GID_INPUT input && \
- sudo groupadd -r -g $GID_RENDER render
+RUN sudo groupadd -rf -g $GID_INPUT input && \
+ sudo groupadd -rf -g $GID_RENDER render
 
 COPY install/latex.sh /tmp/install/latex.sh
 RUN bash /tmp/install/latex.sh && /docker_clean.sh
