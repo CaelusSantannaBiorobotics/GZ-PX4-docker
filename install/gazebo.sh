@@ -9,5 +9,5 @@ echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/pkgs-
 sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
-	gz-${GAZEBO_VERSION}
-sudo apt install -y libignition-gazebo6-dev
+	gz-${GAZEBO_VERSION} \
+	libignition-gazebo6-dev

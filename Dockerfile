@@ -51,6 +51,7 @@ RUN bash /tmp/install/gazebo.sh && /docker_clean.sh
 COPY install/ros.sh /tmp/install/ros.sh
 RUN bash /tmp/install/ros.sh && /docker_clean.sh
 
+
 # COPY install/ros_gz.sh /tmp/install/ros_gz.sh
 # RUN /tmp/install/ros_gz.sh && /docker_clean.sh
 
