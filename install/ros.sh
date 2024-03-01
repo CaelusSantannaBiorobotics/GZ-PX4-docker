@@ -11,20 +11,9 @@ sudo apt-get -y update
 sudo apt-get -y upgrade
 sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	ros-${ROS_VERSION}-desktop \
-	ros-${ROS_VERSION}-ros-base \
 	ros-${ROS_VERSION}-cyclonedds \
 	ros-${ROS_VERSION}-rmw-cyclonedds-cpp \
 	ros-${ROS_VERSION}-gps-msgs \
-	ros-${ROS_VERSION}-vision-msgs \
-	ros-${ROS_VERSION}-bondcpp \
-	ros-${ROS_VERSION}-test-msgs \
-	ros-${ROS_VERSION}-behaviortree-cpp-v3 \
-	ros-${ROS_VERSION}-diagnostic-updater \
-	ros-${ROS_VERSION}-ompl \
-	ros-${ROS_VERSION}-ros-gz \
 	python3-rosdep \
 	python3-colcon-common-extensions \
-	libgflags-dev \
-	xtensor-dev \
-	libceres-dev \
-	graphicsmagick-libmagick-dev-compat
+	libgflags-dev
