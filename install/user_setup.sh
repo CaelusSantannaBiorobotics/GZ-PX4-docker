@@ -11,6 +11,7 @@ source /opt/ros/iron/setup.bash
 export CCACHE_TEMPDIR=/tmp/ccache
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export PYTHONWARNINGS=ignore:::setuptools.installer,ignore:::setuptools.command.install
+export GZ_VERSION=garden
 if [ -f ~/work/gazebo/install/setup.sh ]; then
   source ~/work/gazebo/install/setup.sh
   echo "gazebo built, sourcing"
