@@ -1,6 +1,5 @@
 # px4-gz-docker
 
-
 Additional backup trial maze world is located in the /work/models/maze_sample directory
 Please build ros_gz from source. [see ros-gz](https://github.com/gazebosim/ros_gz)
 
@@ -43,8 +42,10 @@ Divide one of the terminal windows in two and run the following commands in the 
 
 ## Running PX4-offboard
 
-- `cd ros2_ws && colcon build` to build ros2 workspace
-- `source install/setup.bash` to source the ros2 environment
+- `cd ros2_ws` to
+- `rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble` to download dependencies
+- `colcon build` to build ros2 workspace
+- `source install/setup.bash` to source the ros2 environment (this will be done automatically for the next bash sessions)
 - From the built repository under px4_offboard, to run the offboard script, run `ros2 run px4_offboard [script name]` to communicate between the gazebo and ros2 envrionment and use offboard controls with px4.
 
 Examples:
@@ -108,6 +109,6 @@ Tested versions:
 ### Cose utili
 
 - `rosdep check --from-paths . --ignore-src --rosdistro humble`
-- `rosdep install --from-paths src --ignore-src -r -y`
+- `rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble`
 - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar` per il lidar
 - ign è diverso da gz, ign è vecchio
