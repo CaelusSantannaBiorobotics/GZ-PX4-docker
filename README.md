@@ -48,7 +48,17 @@ Divide one of the terminal windows in two and run the following commands in the 
 - `source install/setup.bash` to source the ros2 environment (this will be done automatically for the next bash sessions)
 - From the built repository under px4_offboard, to run the offboard script, run `ros2 run px4_offboard [script name]` to communicate between the gazebo and ros2 envrionment and use offboard controls with px4.
 
-Examples:
+## Examples
+
+1. dsd
+   - `gz sim visualize_lidar.sdf`
+   - `ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan --ros-args -r /lidar:=/laser_scan`
+   - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar`
+   - `rviz2`
+2.
+   - `make px4_sitl gz_x500`
+   - `MicroXRCEAgent udp4 -p 8888`
+   - `ros2 run px4_ros_com offboard_control`
 
 ## Environment Variables
 
@@ -105,6 +115,10 @@ Tested versions:
 
 - Aggiunta di pacchetti necessari per ros2
 - Rimozione di navigation2 da `run_dev.sh`, potrebbe servire, in tal caso si può provare a installarlo da apt
+
+### Cose
+
+- Non funzione il takeoff nel loro mondo
 
 ### Cose utili
 

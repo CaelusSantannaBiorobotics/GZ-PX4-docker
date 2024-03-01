@@ -1,7 +1,7 @@
 #!/bin/bash
 if [ ! -d ./work/px4 ] ; then
     cd ./work
-    git clone git@github.com:w-sribunma/PX4-Autopilot -b ieee-maze24 px4
+    git clone git@github.com:CaelusSantannaBiorobotics/PX4-Autopilot.git -b caelus-maze px4
     cd px4
     git tag v1.14.0-beta2
     cd ../..
