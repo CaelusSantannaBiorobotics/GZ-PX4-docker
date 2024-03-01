@@ -12,6 +12,6 @@ if [ ! -d ./work/ros2_ws/src ] ; then
     cd work/ros2_ws/src
     git clone git@github.com:PX4/px4_msgs.git
     git clone git@github.com:w-sribunma/px4-offboard.git
-    git clone -b iron git@github.com:gazebosim/ros_gz.git
+    git clone -b humble git@github.com:gazebosim/ros_gz.git
 #    git clone https://github.com/ros-planning/navigation2.git --branch humble #[dev] recheck rosdep install
 fi

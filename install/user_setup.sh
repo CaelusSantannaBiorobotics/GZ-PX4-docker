@@ -7,7 +7,7 @@ rosdep update
 
 cat << EOF >> ~/.bashrc
 echo sourcing ~/.bashrc
-source /opt/ros/iron/setup.bash
+source /opt/ros/humble/setup.bash
 export CCACHE_TEMPDIR=/tmp/ccache
 export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp
 export PYTHONWARNINGS=ignore:::setuptools.installer,ignore:::setuptools.command.install
