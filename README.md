@@ -2,6 +2,17 @@
 
 All the px4 models are stored in `work/gz_maps`
 
+```txt
+work/
+┣ px4/                  Cartella del px4
+┣ ros2_ws/              Cartella con dipendenze di ros
+┃ ┗ src/
+┃   ┣ px4_msgs/
+┃   ┣ px4-offboard/
+┣ maze_ros2_ws/         Nostra repo di ros
+┗ .gitignore
+```
+
 ## Download Src Files
 
 ```bash
