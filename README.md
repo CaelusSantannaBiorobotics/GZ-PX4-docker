@@ -1,7 +1,6 @@
 # px4-gz-docker
 
-Additional backup trial maze world is located in the /work/models/maze_sample directory
-Please build ros_gz from source. [see ros-gz](https://github.com/gazebosim/ros_gz)
+All the px4 models are stored in `work/gz_maps`
 
 ## Download Src Files
 
@@ -17,7 +16,9 @@ To build the image
 docker compose build
 ```
 
-If there is no gpu on your pc, you have to comment the docker-compose.override.yml file
+If there is no gpu on your pc, you have to comment the docker-compose.override.yml file.
+
+## Run
 
 Run the container
 
@@ -28,16 +29,17 @@ Run the container
 To access the shell of the container, this will open 2 new terminal windows
 
 ```bash
-docker exec -u user -it px4_gz-px4_gz-1 terminator & docker exec -u user -it px4_gz-px4_gz-1 terminator
+docker exec -u user -it px4_gz-px4_gz-1 terminator & \
+docker exec -u user -it px4_gz-px4_gz-1 terminator
 ```
 
-## Running Gazebo
+## Running PX4 + Gazebo
 
 Divide one of the terminal windows in two and run the following commands in the two panes:
 
 1.
    - `cd px4 && make px4_sitl` to build px4_sitl first. (This only need to be built once in one of the container shells)
-   - `PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500_lidar PX4_GZ_WORLD=maze_sample ./build/px4_sitl_default/bin/px4 -i 1` to start px4_sitl instance 1 with x500 with added lidar plugin in gz-garden on a sample maze model. (PX4_GZ_MODEL=x500 to run base x500 model)
+   - `PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500_lidar PX4_GZ_WORLD=maze_sample ./build/px4_sitl_default/bin/px4 -i 0` to start px4_sitl instance 0 with x500 with added lidar plugin in gz-garden on a sample maze model.
 2. `MicroXRCEAgent udp4 -p 8888` to start DDS agent for communication with ROS2
 
 ## Running PX4-offboard
@@ -50,12 +52,12 @@ Divide one of the terminal windows in two and run the following commands in the 
 
 ## Examples
 
-1. dsd
+1. Lidar in gazebo + rviz2
    - `gz sim visualize_lidar.sdf`
    - `ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan --ros-args -r /lidar:=/laser_scan`
    - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar`
    - `rviz2`
-2.
+2. Offboard from ros2
    - `make px4_sitl gz_x500`
    - `MicroXRCEAgent udp4 -p 8888`
    - `ros2 run px4_ros_com offboard_control`
@@ -63,7 +65,7 @@ Divide one of the terminal windows in two and run the following commands in the 
 ## Environment Variables
 
 - `PX4_GZ_MODEL` Name of the px4 vehicle model to spawn in gz
-- `PX4_GZ_MODEL_POSE` Spawn pose of the vehicle model, must used with `PX4_GZ_MODEL`
+- `PX4_GZ_MODEL_POSE` Spawn pose of the vehicle model, must be used with `PX4_GZ_MODEL`
 - `PX4_MICRODDS_NS` Namespace assigned to the sitl vehicle, normally associated with px4 instances, but can be set mannually
 - `ROS_DOMAIN_ID` Separate each container into its own domain (Is it still necessary since each SITL instance has a unique namespace?)
   
@@ -74,11 +76,6 @@ Tested versions:
 - Ros: `Rolling` and `Humble`
 - Gazebo: `Garden`
 - Docker: `24.0.7`
-
-### Install Docker CLI
-
-- Install Docker CLI using the instructions on the [Docker Installation Page](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository).
-- Note: Docker Desktop may interfere with Nvidia Drivers.
 
 ### Nvidia Drivers
 
@@ -113,16 +110,18 @@ Tested versions:
 
 ### Changelog
 
-- Aggiunta di pacchetti necessari per ros2
 - Rimozione di navigation2 da `run_dev.sh`, potrebbe servire, in tal caso si può provare a installarlo da apt
 
 ### Cose
 
-- Non funzione il takeoff nel loro mondo
+- Non funzione il takeoff nel loro mondo, ho dovuto aggiungere altri plugin (non so se sia legale)
+- Quest'anno si usa ros2, mavros non è molto raccomandato e loro scaricano px4_msgs quindi si usa questo
 
 ### Cose utili
 
 - `rosdep check --from-paths . --ignore-src --rosdistro humble`
 - `rosdep install -y -r -q --from-paths src --ignore-src --rosdistro humble`
-- `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar` per il lidar
-- ign è diverso da gz, ign è vecchio
+- ign è diverso da gz, ign è vecchio (ricordatelo quando copi comandi da internet)
+- `export GZ_SIM_RESOURCE_PATH=~/work/gz_maps/worlds/:~/work/gz_maps/models/` per aggiungere path dove prendere modelli a gz
+- `rqt_graph`
+- `ros2 run rqt_topic rqt_topic`
