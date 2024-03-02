@@ -40,7 +40,11 @@ Divide one of the terminal windows in two and run the following commands in the 
 1.
    - `cd px4 && make px4_sitl` to build px4_sitl first. (This only need to be built once in one of the container shells)
    - `PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=x500_lidar PX4_GZ_WORLD=maze_sample ./build/px4_sitl_default/bin/px4 -i 0` to start px4_sitl instance 0 with x500 with added lidar plugin in gz-garden on a sample maze model.
-2. `MicroXRCEAgent udp4 -p 8888` to start DDS agent for communication with ROS2
+     - Se si vogliono usare più modelli, invece di `-i 0` mettere `-i 1`, `-i 2` etc., i topic sono nella forma:
+       - `-i 0`: `/fmu/out/vehicle_control_mode`
+       - `-i 1`: `/px4_1/fmu/out/vehicle_control_mode`
+       - `-i 2`: `/px4_2/fmu/out/vehicle_control_mode`
+1. `MicroXRCEAgent udp4 -p 8888` to start DDS agent for communication with ROS2
 
 ## Running PX4-offboard
 
@@ -125,3 +129,4 @@ Tested versions:
 - `export GZ_SIM_RESOURCE_PATH=~/work/gz_maps/worlds/:~/work/gz_maps/models/` per aggiungere path dove prendere modelli a gz
 - `rqt_graph`
 - `ros2 run rqt_topic rqt_topic`
+- Se cose come `ros2 topic list` non funzionano (si bloccano), vuol dire che il daemon non riesce a partire, per la maggior parte dei comandi di questo tipo si può aggiungere la flag `--no-daemon` per evitare che parta
