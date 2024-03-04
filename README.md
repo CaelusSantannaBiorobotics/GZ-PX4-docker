@@ -13,7 +13,15 @@ work/
 ┗ .gitignore
 ```
 
-## Download Src Files
+## Download
+
+Download submodules
+
+```bash
+git submodule update --init --recursive
+```
+
+Download Src files
 
 ```bash
 ./get_src.sh
