@@ -7,7 +7,7 @@
       <visual name="visual">
         <geometry>
           <mesh>
-            <uri>models://maze_sample/media/maze_sample.dae</uri>
+            <uri>model://maze_sample/media/maze_sample.dae</uri>
           </mesh>
         </geometry>
         <pose>0 0 -.5 0 0 0</pose>
@@ -15,7 +15,7 @@
       <collision name="collision">
         <geometry>
           <mesh>
-            <uri>models://maze_sample/media/maze_sample.dae</uri>
+            <uri>model://maze_sample/media/maze_sample.dae</uri>
           </mesh>
         </geometry>
         <pose>0 0 -.5 0 0 0</pose>

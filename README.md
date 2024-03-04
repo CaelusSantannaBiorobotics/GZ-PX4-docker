@@ -80,7 +80,17 @@ Divide one of the terminal windows in two and run the following commands in the 
    - `ros2 run ros_gz_bridge parameter_bridge /lidar@sensor_msgs/msg/LaserScan[ignition.msgs.LaserScan --ros-args -r /lidar:=/laser_scan`
    - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar`
    - `rviz2`
-2. Offboard from ros2
+2. Lidar point cloud in gazebo + rviz2
+   - `gz sim visualize_lidar.sdf`
+   - `ros2 run ros_gz_bridge parameter_bridge /lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked`
+   - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map model_with_lidar/link/gpu_lidar`
+   - `rviz2`
+3. Lidar point cloud in gazebo + rviz2
+   - `PX4_SYS_AUTOSTART=4001 PX4_GZ_MODEL=cae_x500_lidar PX4_GZ_WORLD=cae_maze_sample ./build/px4_sitl_default/bin/px4 -i 0`
+   - `ros2 run ros_gz_bridge parameter_bridge /lidar/points@sensor_msgs/msg/PointCloud2[gz.msgs.PointCloudPacked`
+   - `ros2 run tf2_ros static_transform_publisher 0 0 0 0 0 0 map cae_x500_lidar_0/base_link/lidar_sensor`
+   - `rviz2`
+4. Offboard from ros2
    - `make px4_sitl gz_x500`
    - `MicroXRCEAgent udp4 -p 8888`
    - `ros2 run px4_ros_com offboard_control`
@@ -134,6 +144,8 @@ Tested versions:
 ### Changelog
 
 - Rimozione di navigation2 da `run_dev.sh`, potrebbe servire, in tal caso si può provare a installarlo da apt
+- Creazione di `cae_x500_lidar` e `cae_maze_sample` per testare, il primo ha il lidar che si aggiorna 10 e non 500 volte al secondo( spero che nella realtà sia così ) il secondo ha dei plugin in più che probabilmente non possono essere usati nella simulazione ufficiale
+- Modifica dei loro file di world etc perché non partono
 
 ### Cose
 
