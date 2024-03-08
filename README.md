@@ -160,4 +160,4 @@ Tested versions:
 - `export GZ_SIM_RESOURCE_PATH=~/work/gz_maps/worlds/:~/work/gz_maps/models/` per aggiungere path dove prendere modelli a gz
 - `rqt_graph`
 - `ros2 run rqt_topic rqt_topic`
-- Se cose come `ros2 topic list` non funzionano (si bloccano), vuol dire che il daemon non riesce a partire, per la maggior parte dei comandi di questo tipo si può aggiungere la flag `--no-daemon` per evitare che parta
+- Se cose come `ros2 topic list` non funzionano (si bloccano), vuol dire che il daemon non riesce a partire, per la maggior parte dei comandi di questo tipo si può aggiungere la flag `--no-daemon` per evitare che parta ( su arch in questo momento una soluzione è aggiungere `ulimit -n 1024` a .bashrc )
