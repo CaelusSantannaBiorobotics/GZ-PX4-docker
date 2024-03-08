@@ -143,7 +143,6 @@ Tested versions:
 
 ### Changelog
 
-- Rimozione di navigation2 da `run_dev.sh`, potrebbe servire, in tal caso si può provare a installarlo da apt
 - Creazione di `cae_x500_lidar` e `cae_maze_sample` per testare, il primo ha il lidar che si aggiorna 10 e non 500 volte al secondo( spero che nella realtà sia così ) il secondo ha dei plugin in più che probabilmente non possono essere usati nella simulazione ufficiale
 - Modifica dei loro file di world etc perché non partono
 
@@ -161,3 +160,7 @@ Tested versions:
 - `rqt_graph`
 - `ros2 run rqt_topic rqt_topic`
 - Se cose come `ros2 topic list` non funzionano (si bloccano), vuol dire che il daemon non riesce a partire, per la maggior parte dei comandi di questo tipo si può aggiungere la flag `--no-daemon` per evitare che parta ( su arch in questo momento una soluzione è aggiungere `ulimit -n 1024` a .bashrc )
+
+### TODO
+
+- Aggiustare le mappe

@@ -26,4 +26,6 @@ if [ -f ~/work/maze_ros2_ws/install/setup.sh ]; then
 fi
 source /usr/share/colcon_cd/function/colcon_cd.sh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
+
+#ulimit -n 1024
 EOF
