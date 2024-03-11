@@ -32,6 +32,7 @@ services:
       - net.ipv6.conf.all.disable_ipv6=0
     volumes:
       - ./work:/home/user/work
+      - ./work/.bash_history:/home/user/.bash_history
       - gz_config:/home/user/.gz
       - /tmp/.X11-unix:/tmp/.X11-unix
       #- ${SSH_AUTH_SOCK}:${SSH_AUTH_SOCK}
