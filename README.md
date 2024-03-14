@@ -163,4 +163,4 @@ Tested versions:
 
 ### TODO
 
-- Aggiustare le mappe
+- Aggiustare le mappe (importante, manca quella di qualifica)
