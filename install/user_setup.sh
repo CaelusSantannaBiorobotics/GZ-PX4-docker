@@ -27,5 +27,8 @@ fi
 source /usr/share/colcon_cd/function/colcon_cd.sh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 
+
+PROMPT_COMMAND='history -a'
+HISTTIMEFORMAT="%F %T "
 #ulimit -n 1024
 EOF
