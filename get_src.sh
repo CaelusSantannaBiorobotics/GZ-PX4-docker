@@ -14,4 +14,12 @@ if [ ! -d ./work/ros2_ws/src ] ; then
     git clone git@github.com:w-sribunma/px4-offboard.git
     # git clone -b humble git@github.com:gazebosim/ros_gz.git
     # git clone https://github.com/ros-planning/navigation2.git --branch humble # se lo vuoi usare cancella la cartella system test
+    cd ../../..
+fi
+
+# If no file named QgroundControl.AppImage exists, download it
+if [ ! -f ./work/QgroundControl.AppImage ] ; then
+    cd  ./work
+    wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
+    chmod +x QGroundControl.AppImage
 fi

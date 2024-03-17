@@ -17,6 +17,7 @@ sudo DEBIAN_FRONTEND=noninteractive apt-get install --no-install-recommends -y \
 	ros-${ROS_VERSION}-navigation2 \
   	ros-${ROS_VERSION}-nav2-bringup \
   	ros-${ROS_VERSION}-ros-gzgarden \
+  	ros-${ROS_VERSION}-laser-filters \
 	python3-rosdep \
 	python3-colcon-common-extensions \
 	libgflags-dev

@@ -27,8 +27,10 @@ fi
 source /usr/share/colcon_cd/function/colcon_cd.sh
 source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash
 
-
 PROMPT_COMMAND='history -a'
 HISTTIMEFORMAT="%F %T "
+
+export GZ_SIM_RESOURCE_PATH=~/work/gz_maps/worlds/:~/work/gz_maps/models/
+
 #ulimit -n 1024
 EOF

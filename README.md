@@ -160,6 +160,8 @@ Tested versions:
 - `rqt_graph`
 - `ros2 run rqt_topic rqt_topic`
 - Se cose come `ros2 topic list` non funzionano (si bloccano), vuol dire che il daemon non riesce a partire, per la maggior parte dei comandi di questo tipo si può aggiungere la flag `--no-daemon` per evitare che parta ( su arch in questo momento una soluzione è aggiungere `ulimit -n 1024` a .bashrc )
+- `PX4_GZ_MODEL_NAME=x500_lidar ./build/px4_sitl_default/bin/px4`
+- `ros2 topic echo /scan_odom --truncate-length=3`
 
 ### TODO
 
