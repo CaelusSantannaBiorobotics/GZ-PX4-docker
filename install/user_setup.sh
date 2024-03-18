@@ -31,6 +31,6 @@ PROMPT_COMMAND='history -a'
 HISTTIMEFORMAT="%F %T "
 
 export GZ_SIM_RESOURCE_PATH=~/work/gz_maps/worlds/:~/work/gz_maps/models/
-
+export GZ_SIM_RESOURCE_PATH=~/work/maze_ros2_ws/src/x500_lidar_description/gz_maps/worlds:~/work/maze_ros2_ws/src/x500_lidar_description/gz_maps/models
 #ulimit -n 1024
 EOF
