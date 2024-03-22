@@ -2,3 +2,4 @@
 !.gitignore
 !gz_maps
 !maze_ros2_ws
+!qground.params
