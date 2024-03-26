@@ -78,7 +78,7 @@ RUN mkdir /tmp/runtime-docker && sudo chmod 700 /tmp/runtime-docker
 
 # create a user for running the container
 ARG UID_USER=1000
-RUN sudo useradd --create-home -l -u $UID_USER -G sudo,plugdev,render,input,video user && \
+RUN sudo useradd --create-home -l -u $UID_USER -G sudo,plugdev,render,input,video,dialout user && \
  echo user: $UID_USER
 USER user
 
