@@ -51,9 +51,6 @@ RUN bash /tmp/install/gazebo.sh && /docker_clean.sh
 COPY install/ros.sh /tmp/install/ros.sh
 RUN bash /tmp/install/ros.sh && /docker_clean.sh
 
-# COPY install/qground.sh /tmp/install/qground.sh
-# RUN bash /tmp/install/qground.sh && /docker_clean.sh
-
 # COPY install/ros_gz.sh /tmp/install/ros_gz.sh
 # RUN /tmp/install/ros_gz.sh && /docker_clean.sh
 
@@ -96,6 +93,9 @@ RUN mkdir -p /home/user/work
 
 COPY install/px4_setup.sh /home/user/px4_setup.sh
 RUN bash /home/user/px4_setup.sh && rm /home/user/px4_setup.sh
+
+COPY install/qground.sh /tmp/install/qground.sh
+RUN bash /tmp/install/qground.sh && /docker_clean.sh
 
 # setup entry point
 COPY install/entrypoint.sh /
