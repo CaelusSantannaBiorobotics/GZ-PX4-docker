@@ -18,7 +18,7 @@ if [ ! -d ./work/ros2_ws/src ] ; then
 fi
 
 # If no file named QgroundControl.AppImage exists, download it
-if [ ! -f ./work/QgroundControl.AppImage ] ; then
+if [ ! -f ./work/QGroundControl.AppImage ] ; then
     cd  ./work
     wget https://d176tv9ibo4jno.cloudfront.net/latest/QGroundControl.AppImage
     chmod +x QGroundControl.AppImage

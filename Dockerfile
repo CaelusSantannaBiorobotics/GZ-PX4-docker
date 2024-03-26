@@ -51,10 +51,6 @@ RUN bash /tmp/install/gazebo.sh && /docker_clean.sh
 COPY install/ros.sh /tmp/install/ros.sh
 RUN bash /tmp/install/ros.sh && /docker_clean.sh
 
-COPY install/qground.sh /tmp/install/qground.sh
-RUN bash /tmp/install/qground.sh && /docker_clean.sh
-
-
 # COPY install/ros_gz.sh /tmp/install/ros_gz.sh
 # RUN /tmp/install/ros_gz.sh && /docker_clean.sh
 
@@ -78,12 +74,15 @@ RUN mkdir /tmp/runtime-docker && sudo chmod 700 /tmp/runtime-docker
 
 # create a user for running the container
 ARG UID_USER=1000
-RUN sudo useradd --create-home -l -u $UID_USER -G sudo,plugdev,render,input,video,dialout user && \
+RUN sudo useradd --create-home -l -u $UID_USER -G sudo,plugdev,render,input,video user && \
  echo user: $UID_USER
 USER user
 
 COPY install/user_setup.sh /tmp/install/user_setup.sh
 RUN /tmp/install/user_setup.sh && /docker_clean.sh
+
+COPY install/qground.sh /tmp/install/qground.sh
+RUN bash /tmp/install/qground.sh && /docker_clean.sh
 
 # create setting directory for gazebo
 VOLUME /home/user/.gz
